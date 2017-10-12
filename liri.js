@@ -12,19 +12,14 @@ switch(stringInput1) {
 }
 
 function bird () {
-    var client = new Twitter({
-        consumer_key: twitterKeys.consumer_key,
-        consumer_secret: twitterKeys.consumer_secret,
-        access_token_key: twitterKeys.access_token_key,
-        access_token_secret: twitterKeys.access_token_secret
-    });
+    var client = new Twitter(twitterKeys);
 
     var params = {screen_name: 'kimberlyOSX'};
-    client.get('statuses/kimberlyOSX_timeline', params, function
-        (error, tweets, response) {
-        if (!error) {
+    client.get('statuses/user_timeline', params, function (error, tweets, response) {
+        if (tweets) {
 
-            console.log(tweets);
+            console.log(tweets[1].created_at);
+            tweets.for
 
         }
     });
