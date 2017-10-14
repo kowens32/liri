@@ -1,5 +1,5 @@
 var Twitter = require('twitter');
-var Spotify = require('spotify');
+var Spotify = require('node-spotify-api');
 var twitterKeys = require('./keys');
 var spotifyKeys = require('./keys');
 
@@ -35,10 +35,11 @@ function bird () {
 function findSong () {
     var music = new Spotify(spotifyKeys)
 
-    Spotify.search({tpe: 'track', query: stringInput2}, function (err, data) {
+    music.search({tpe: 'track', query: stringInput2}, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
         console.log(data);
     });
 }
+
