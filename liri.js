@@ -46,17 +46,8 @@ function findSong () {
     });
 }
 
-for (var i = 4; i < stringInput3.length; i++) {
-    if ( i > 4 && i <stringInput3.length ) {
-        movieName = movieName + "+" + stringInput3[i];
-    }
 
-    else {
-        movieName += stringInput3[i];
-    }
-}
-
-var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+var queryUrl = "http://www.omdbapi.com/?t=" +stringInput3+ "&y=&plot=short&apikey=40e9cece";
 
 console.log(queryUrl);
 
