@@ -5,45 +5,44 @@ var twitterKeys = require('./keys');
 var spotifyKeys = require('./keys');
 
 var stringInput1 = process.argv[2];
-var stringInput2 = process.argv[3];
 var stringInput3 = process.argv[3];
-var movieName = "";
 
-// switch(stringInput1) {
-//     case 'my-tweets':
-//         bird();
-//         break;
-// }
 
-// switch (stringInput2){
-//     case 'spotify-this-song':
-//         findSong();
-//         break;
-// }
+switch(stringInput1) {
+    case 'my-tweets':
+        bird();
+        break;
+}
 
-// function bird () {
-//     var client = new Twitter(twitterKeys);
-//
-//     var params = {screen_name: 'kimberlyOSX'};
-//     client.get('statuses/user_timeline', params, function (error, tweets, response) {
-//         if (tweets) {
-//
-//             console.log(tweets);
-//
-//         }
-//     });
-// }
-//
-// function findSong () {
-//     var music = new Spotify(spotifyKeys)
-//
-//     music.search({tpe: 'track', query: stringInput2}, function (err, data) {
-//         if (err) {
-//             return console.log('Error occurred: ' + err);
-//         }
-//         console.log(data);
-//     });
-// }
+switch (stringInput3){
+    case 'spotify-this-song':
+        findSong();
+        break;
+}
+
+function bird () {
+    var client = new Twitter(twitterKeys);
+
+    var params = {screen_name: 'kimberlyOSX'};
+    client.get('statuses/user_timeline', params, function (error, tweets, response) {
+        if (tweets) {
+
+            console.log(tweets);
+
+        }
+    });
+}
+
+function findSong () {
+    var music = new Spotify(spotifyKeys)
+
+    music.search({tpe: 'track', query: stringInput1}, function (err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        console.log(data);
+    });
+}
 
 
 var queryUrl = "http://www.omdbapi.com/?t=" +stringInput3+ "&y=&plot=short&apikey=40e9cece";
