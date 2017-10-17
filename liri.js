@@ -1,6 +1,7 @@
 var Twitter = require('twitter');
 var Spotify = require('node-spotify-api');
 var request = require('request');
+var fs = require("fs");
 var twitterKeys = require('./keys').twitter;
 var spotifyKeys = require('./keys').spotify;
 
@@ -26,6 +27,12 @@ switch(stringInput1) {
         break;
 }
 
+switch(stringInput1) {
+    case 'do-what-it-says':
+        command();
+        break;
+}
+
 function bird () {
     console.log(twitterKeys)
     var client = new Twitter(twitterKeys);
@@ -44,11 +51,11 @@ function findSong() {
     console.log(spotifyKeys);
     var music = new Spotify(spotifyKeys);
 
-    music.search({type: 'track', query: stringInput3}, function (err, data) {
+    music.search({type: 'track', query: stringInput3, limit:2}, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-        console.log(data.tracks.items[4]);
+        console.log(data.tracks);
     });
 }
 
@@ -67,4 +74,16 @@ function findMovie() {
                 ' Quick Plot: ' + JSON.parse(body).Plot + ' Actors: ' + JSON.parse(body).Actors);
         }
     });
+}
+
+function command () {
+ fs.readFile("random.txt", "utf8", function(error, data){
+     if (error) {
+         return console.log(error);
+     }
+ console.log(data);
+     var dataArr = data.split(" ");
+     console.log(dataArr);
+ });
+
 }
