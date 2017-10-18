@@ -40,12 +40,14 @@ function bird () {
     console.log(twitterKeys)
     var client = new Twitter(twitterKeys);
 
-    var params = {screen_name: 'kimberlyOSX', count: 5};
+    var params = {screen_name: 'TheEconomist', count: 20};
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (tweets) {
 
-            console.log(tweets);
+            for (i = 0; i < tweets.length; i++) {
 
+                console.log('\n',tweets[i].text, tweets[i].created_at);
+            }
         }
     });
 }
@@ -53,15 +55,24 @@ function bird () {
 function findSong() {
 
     var song = '';
+
     if (stringInput3 === undefined){
         song = ('The Sign, Ace of Base');
         stringInput3 = song;
     }
     else {
-        song =stringInput3
+
+        song = stringInput3
     }
-
-
+    //
+    // for (i = 3; i < stringInput3.length; i++){
+    //     if (i > 3 && I < stringInput3.length)
+    //     {
+    //         song = song + "+" + stringInput3[i];
+    //     }
+    //
+    //     console.log('playing now' + song);
+    // }
 
 console.log('what is this' + stringInput3);
     console.log(spotifyKeys);
