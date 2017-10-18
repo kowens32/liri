@@ -9,6 +9,8 @@ var stringInput1 = process.argv[2];
 var stringInput3 = process.argv[3];
 
 
+
+
 switch(stringInput1) {
     case 'my-tweets':
         bird();
@@ -27,6 +29,7 @@ switch(stringInput1) {
         break;
 }
 
+
 switch(stringInput1) {
     case 'do-what-it-says':
         command();
@@ -37,7 +40,7 @@ function bird () {
     console.log(twitterKeys)
     var client = new Twitter(twitterKeys);
 
-    var params = {screen_name: 'kimberlyOSX'};
+    var params = {screen_name: 'kimberlyOSX', count: 5};
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (tweets) {
 
@@ -48,10 +51,15 @@ function bird () {
 }
 
 function findSong() {
+
+
+
+console.log('what is this' + stringInput3);
     console.log(spotifyKeys);
     var music = new Spotify(spotifyKeys);
 
-    music.search({type: 'track', query: stringInput3, limit:2}, function (err, data) {
+    music.search({type: 'track', query: stringInput3, limit: 1}, function (err, data) {
+
         if (err) {
             return console.log('Error occurred: ' + err);
         }
@@ -60,6 +68,7 @@ function findSong() {
 }
 
 function findMovie() {
+
 
     var queryUrl = "http://www.omdbapi.com/?t=" + stringInput3 + "&y=&plot=short&apikey=40e9cece";
     console.log(stringInput3);
@@ -82,7 +91,7 @@ function command () {
          return console.log(error);
      }
  console.log(data);
-     var dataArr = data.split(" ");
+     var dataArr = data.split(",");
      console.log(dataArr);
  });
 
