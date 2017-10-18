@@ -52,13 +52,22 @@ function bird () {
 
 function findSong() {
 
+    var song = '';
+    if (stringInput3 === undefined){
+        song = ('The Sign, Ace of Base');
+        stringInput3 = song;
+    }
+    else {
+        song =stringInput3
+    }
+
 
 
 console.log('what is this' + stringInput3);
     console.log(spotifyKeys);
     var music = new Spotify(spotifyKeys);
 
-    music.search({type: 'track', query: stringInput3, limit: 1}, function (err, data) {
+    music.search({type: 'track', query: stringInput3,  limit: 1}, function (err, data) {
 
         if (err) {
             return console.log('Error occurred: ' + err);
@@ -68,7 +77,14 @@ console.log('what is this' + stringInput3);
 }
 
 function findMovie() {
-
+var movie = '';
+if (stringInput3 === undefined){
+    movie = ('Mr. Nobody');
+    stringInput3 = movie;
+}
+else {
+    movie =stringInput3
+}
 
     var queryUrl = "http://www.omdbapi.com/?t=" + stringInput3 + "&y=&plot=short&apikey=40e9cece";
     console.log(stringInput3);
